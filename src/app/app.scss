@@ -1,0 +1,53 @@
+// @import 'meyer-reset';
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  width: 100%;
+  margin: 0px;
+}
+
+#app {
+  position: absolute;
+  overflow: hidden;
+  display: flex;
+  height: 100%;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  .app-container {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    height: 100%;
+
+    .header {
+    position: relative;
+    display: block;
+    flex-shrink: 0;
+    z-index: 1000;
+    height: 4em;
+    }
+
+    .content {
+      position: relative;
+      display: flex;
+      height: 100%;
+      overflow: hidden;
+      flex-wrap: nowrap;
+      flex-grow: 1;
+    }
+    
+    .footer {
+      height: 64px;
+    }
+  }
+}
