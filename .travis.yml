@@ -9,5 +9,6 @@ cache:
   directories:
     - node_modules
 script:
-  - "jest -u"
+#  REMOVE JEST UNTIL TESTS HAVE BEEN ADDED
+#  - "jest -u"
   - "npm run build"
