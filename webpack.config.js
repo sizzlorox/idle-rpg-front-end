@@ -2,6 +2,7 @@
 
 const { DefinePlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebPackPlugin = require('copy-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const path = require('path');
@@ -34,6 +35,10 @@ module.exports = {
       filename: '[path].gz[query]'
     }),
 
+    new CopyWebPackPlugin([{
+      from: './src/public/assets', to: './assets',
+    }]),
+
     new DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
@@ -63,6 +68,9 @@ module.exports = {
               localIdentName: '[local]',
               camelCase: 'dashesOnly'
             }
+          },
+          {
+            loader: 'resolve-url-loader',
           },
           {
             loader: "sass-loader"

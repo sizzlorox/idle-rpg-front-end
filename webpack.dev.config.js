@@ -2,6 +2,7 @@
 
 const { DefinePlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebPackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -24,6 +25,10 @@ module.exports = {
       inject: 'body',
       filename: 'index.html',
     }),
+
+    new CopyWebPackPlugin([{
+      from: './src/public/assets', to: './assets',
+    }]),
 
     new DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development')
@@ -56,7 +61,10 @@ module.exports = {
             }
           },
           {
-            loader: "sass-loader"
+            loader: 'resolve-url-loader',
+          },
+          {
+            loader: 'sass-loader'
           }]
       },
       {
