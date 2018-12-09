@@ -8,7 +8,9 @@ import Tab from '@material-ui/core/Tab';
 import LBTable from './LBTable';
 
 const styles = {
-
+  leaderBoardContainer: {
+    margin: 12,
+  },
 };
 
 const mockPlayers = Array(10).fill({
@@ -64,7 +66,7 @@ class Leaderboard extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <div className={this.props.classes.leaderBoardContainer}>
         <AppBar position="static" color="inherit">
           <Tabs
             value={this.state.value}
@@ -79,7 +81,7 @@ class Leaderboard extends React.Component {
           </Tabs>
         </AppBar>
         {this.getTabContainer()}
-      </React.Fragment>
+      </div>
     );
   }
 }
