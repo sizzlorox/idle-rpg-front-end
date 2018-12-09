@@ -1,7 +1,7 @@
-export const SHOW_SPINNER      = '[ui] show spinner';
-export const HIDE_SPINNER      = '[ui] hide spinner';
-export const FETCH_IN_PROGRESS = '[ui] fetch in progress';
-export const FETCH_COMPLETE    = '[ui] fetch complete';
+export const SHOW_SPINNER      = '[UI] show spinner';
+export const HIDE_SPINNER      = '[UI] hide spinner';
+export const FETCH_IN_PROGRESS = '[UI] fetch in progress';
+export const FETCH_COMPLETE    = '[UI] fetch complete';
 
 export const showSpinner = () => ({
   type: SHOW_SPINNER

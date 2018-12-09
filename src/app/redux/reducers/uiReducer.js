@@ -1,4 +1,4 @@
-import { SHOW_SPINNER, HIDE_SPINNER, FETCH_COMPLETE, FETCH_IN_PROGRESS } from "../actions/ui";
+import { SHOW_SPINNER, HIDE_SPINNER, FETCH_COMPLETE, FETCH_IN_PROGRESS } from "../actions/uiAction";
 
 const initUi = {
   pending: false,
