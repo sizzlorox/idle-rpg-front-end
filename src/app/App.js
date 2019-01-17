@@ -5,15 +5,15 @@ import { Switch, Route } from 'react-router-dom';
 import { withStyles } from '@material-ui/core';
 
 // Components
-import ToasterContainer from './components/toaster/ToasterContainer';
 import AppBar from './components/app-bar/AppBar';
+import ToasterContainer from './components/ToasterContainer';
 
 // Pages
 import Home from './pages/Home';
 
 const styles = {};
 
-const App = ({ classes }) => (
+const App = () => (
   <div className="app-container">
     <AppBar />
     <div className="content">
@@ -24,5 +24,6 @@ const App = ({ classes }) => (
     </div>
     <ToasterContainer />
   </div>
-);
+)
+
 export default withStyles(styles)(App);
