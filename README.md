@@ -5,4 +5,4 @@ This project is UNDER DEVELOPMENT this is going to be a browser version of my Id
 The name of the project is subject to change as the project gets closer to completion.
 
 # Requirements
-node.js v7 or higher
+node.js v8 or higher
