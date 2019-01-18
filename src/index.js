@@ -10,13 +10,13 @@ import App from './app/App';
 require('./app/app.scss');
 
 ReactDOM.render((
-  <BrowserRouter>
-    <Provider store={store}>
+  <Provider store={store}>
+    <BrowserRouter>
       <SnackbarProvider maxSnack={3}>
         <App />
       </SnackbarProvider>
-    </Provider>
-  </BrowserRouter>
+    </BrowserRouter>
+  </Provider>
 ), document.getElementById('app'));
 
 if ('serviceWorker' in navigator && window.location.protocol === 'https:') {

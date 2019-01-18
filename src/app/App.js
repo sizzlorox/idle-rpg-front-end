@@ -1,5 +1,6 @@
 import React from 'react';
-import { browserHistory, Router } from 'react-router-dom';
+import { Switch, Route } from 'react-router';
+import createBrowserHistory from "history/createBrowserHistory";
 
 import routes from './routes';
 
@@ -11,12 +12,15 @@ import AppBar from './components/app-bar/AppBar';
 import ToasterContainer from './components/ToasterContainer';
 
 const styles = {};
+const history = createBrowserHistory()
 
 const App = () => (
   <div className="app-container">
     <AppBar />
     <div className="content">
-      <Router history={browserHistory} routes={routes} />
+      <Switch>
+        {routes.map((route, index) => <Route key={index} path={route.path} component={route.component} />)}
+      </Switch>
     </div>
     <ToasterContainer />
   </div>
