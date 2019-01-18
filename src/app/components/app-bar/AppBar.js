@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import auth from '../../modules/Auth';
+
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import ToolBar from '@material-ui/core/Toolbar';
@@ -13,6 +15,7 @@ import { loginAccount, logoutAccount, registerAccount } from '../../redux/action
 // Components
 import LoginDialog from './dialogs/LoginDialog';
 import RegisterDialog from './dialogs/RegisterDialog';
+import AccountMenu from './AccountMenu';
 
 const styles = {
   container: {
@@ -23,21 +26,18 @@ const styles = {
   },
   menu: {
     float: 'right',
-  },
+  }
 };
 
 class TopAppBar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      login: {
-        isOpen: false,
-      },
-      register: {
-        isOpen: false,
-      },
-    };
-  }
+  state = {
+    login: {
+      isOpen: false,
+    },
+    register: {
+      isOpen: false,
+    },
+  };
 
   _handleModal = key => event => {
     this.setState({
@@ -48,26 +48,35 @@ class TopAppBar extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     return (
       <AppBar className="header">
         <ToolBar>
-          <Typography variant="h6" color="inherit" className={this.props.classes.headerLabel}>
+          <Typography variant="h6" color="inherit" className={classes.headerLabel}>
             Idle-RPG
           </Typography>
-          <div className={this.props.classes.menu}>
-            <Button color="inherit" onClick={this._handleModal('login')} >Login</Button>
-            <Button color="inherit" onClick={this._handleModal('register')}>Register</Button>
+          <div className={classes.menu}>
+            {
+              auth.isUserAuthenticated()
+                ?
+                <AccountMenu onLogout={this.props.logoutAccount} />
+                :
+                <React.Fragment>
+                  <Button color="inherit" onClick={this._handleModal('login')} >Login</Button>
+                  <Button color="inherit" onClick={this._handleModal('register')}>Register</Button>
+                  <LoginDialog
+                    isOpen={this.state.login.isOpen}
+                    onClose={this._handleModal('login')}
+                    onSubmit={this.props.loginAccount}
+                  />
+                  <RegisterDialog
+                    isOpen={this.state.register.isOpen}
+                    onClose={this._handleModal('register')}
+                    onSubmit={this.props.registerAccount}
+                  />
+                </React.Fragment>
+            }
           </div>
-          <LoginDialog
-            isOpen={this.state.login.isOpen}
-            onClose={this._handleModal('login')}
-            onSubmit={this.props.loginAccount}
-          />
-          <RegisterDialog
-            isOpen={this.state.register.isOpen}
-            onClose={this._handleModal('register')}
-            onSubmit={this.props.registerAccount}
-          />
         </ToolBar>
       </AppBar>
     )

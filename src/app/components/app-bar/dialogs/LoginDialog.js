@@ -27,6 +27,7 @@ class LoginDialog extends Component {
 
   _handleSubmit = () => {
     this.props.onSubmit(this.state);
+    this.props.onClose();
   };
 
   render() {
@@ -38,7 +39,7 @@ class LoginDialog extends Component {
       >
         <DialogTitle>
           Login
-    </DialogTitle>
+        </DialogTitle>
         <DialogContent>
           <TextField
             autoFocus
@@ -61,10 +62,10 @@ class LoginDialog extends Component {
         <DialogActions>
           <Button type="submit" onClick={this._handleSubmit} color="primary">
             Login
-      </Button>
+          </Button>
           <Button onClick={onClose} color="primary">
             Cancel
-      </Button>
+          </Button>
         </DialogActions>
       </Dialog>
     );

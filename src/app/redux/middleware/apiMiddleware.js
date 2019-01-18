@@ -1,18 +1,25 @@
 import { API_REQUEST } from "../actions/apiAction";
 import { showToaster } from '../actions/uiAction';
 
+import auth from '../../modules/Auth';
+
 // this middleware care only for API calls
 export const apiMiddleware = ({ dispatch }) => next => action => {
   if (action.type === API_REQUEST) {
     const { method, url, onSuccess, onError } = action.meta;
-    const payload = {
+    let payload = {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
       method,
-      body: JSON.stringify(action.payload)
+      body: action.payload ? action.payload : {}
     };
+    if (auth.getToken()) {
+      payload.headers['authorization'] = `Bearer ${auth.getToken()}`;
+      payload.body['username'] = auth.getUsername();
+    }
+    payload.body = JSON.stringify(payload.body);
 
     fetch(url, payload)
       .then(response => response.json())
