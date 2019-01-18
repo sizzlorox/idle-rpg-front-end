@@ -40,45 +40,47 @@ class RegisterDialog extends Component {
           Register
         </DialogTitle>
         <DialogContent>
-          <TextField
-            required
-            autoFocus
-            margin="dense"
-            id="username"
-            label="Username"
-            variant="outlined"
-            fullWidth
-            onChange={this._handleChange('username')}
-          />
-          <TextField
-            margin="dense"
-            id="email"
-            label="Email"
-            type="email"
-            variant="outlined"
-            fullWidth
-            onChange={this._handleChange('email')}
-          />
-          <TextField
-            required
-            margin="dense"
-            id="password"
-            label="Password"
-            type="password"
-            variant="outlined"
-            fullWidth
-            onChange={this._handleChange('password')}
-          />
-          <TextField
-            required
-            margin="dense"
-            id="confirm-password"
-            label="Confirm Password"
-            type="password"
-            variant="outlined"
-            fullWidth
-            onChange={this._handleChange('confirmPassword')}
-          />
+          <form autoComplete="on">
+            <TextField
+              required
+              autoFocus
+              margin="dense"
+              id="username"
+              label="Username"
+              variant="outlined"
+              fullWidth
+              onChange={this._handleChange('username')}
+            />
+            <TextField
+              margin="dense"
+              id="email"
+              label="Email"
+              type="email"
+              variant="outlined"
+              fullWidth
+              onChange={this._handleChange('email')}
+            />
+            <TextField
+              required
+              margin="dense"
+              id="password"
+              label="Password"
+              type="password"
+              variant="outlined"
+              fullWidth
+              onChange={this._handleChange('password')}
+            />
+            <TextField
+              required
+              margin="dense"
+              id="confirm-password"
+              label="Confirm Password"
+              type="password"
+              variant="outlined"
+              fullWidth
+              onChange={this._handleChange('confirmPassword')}
+            />
+          </form>
         </DialogContent>
         <DialogActions>
           <Button type="submit" onClick={this._handleSubmit} color="primary">

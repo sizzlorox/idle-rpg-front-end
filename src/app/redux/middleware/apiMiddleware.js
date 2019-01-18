@@ -1,5 +1,6 @@
 import { API_REQUEST } from "../actions/apiAction";
 import { showToaster } from '../actions/uiAction';
+import { Redirect } from 'react-router'
 
 import auth from '../../modules/Auth';
 
@@ -27,6 +28,9 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
         dispatch({ type: onSuccess, payload: data })
         if (data.toaster.show) {
           dispatch(showToaster(data.toaster.type, data.message));
+        }
+        if (data.redirect) {
+          document.location.href = data.redirect;
         }
       })
       .catch(error => dispatch({ type: onError, payload: error }))

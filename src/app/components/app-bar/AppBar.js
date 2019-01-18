@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import auth from '../../modules/Auth';
 
@@ -26,6 +27,10 @@ const styles = {
   },
   menu: {
     float: 'right',
+  },
+  links: {
+    color: 'inherit',
+    textDecoration: 'none'
   }
 };
 
@@ -59,7 +64,12 @@ class TopAppBar extends Component {
             {
               auth.isUserAuthenticated()
                 ?
-                <AccountMenu onLogout={this.props.logoutAccount} />
+                  <React.Fragment>
+                    <Button size="medium" color="inherit">
+                      <Link className={classes.links} to="/game">Game</Link>
+                    </Button>
+                    <AccountMenu onLogout={this.props.logoutAccount} />
+                  </React.Fragment>
                 :
                 <React.Fragment>
                   <Button color="inherit" onClick={this._handleModal('login')} >Login</Button>
