@@ -61,7 +61,7 @@ class TopAppBar extends Component {
           <LoginDialog
             isOpen={this.state.login.isOpen}
             onClose={this._handleModal('login')}
-            onSubmit={loginAccount}
+            onSubmit={this.props.loginAccount}
           />
           <RegisterDialog
             isOpen={this.state.register.isOpen}

@@ -1,4 +1,4 @@
-import { LOGIN_ACCOUNT, LOGOUT_ACCOUNT, REGISTER_ACCOUNT, FETCH_ACCOUNT_SUCCESS, FETCH_ACCOUNT_ERROR, updateAccount } from '../actions/accountAction';
+import { LOGIN_ACCOUNT, LOGOUT_ACCOUNT, REGISTER_ACCOUNT, FETCH_ACCOUNT_SUCCESS, FETCH_ACCOUNT_ERROR, registerSession, updateAccount } from '../actions/accountAction';
 import { showSpinner, hideSpinner } from '../actions/uiAction';
 import { apiRequest } from '../actions/apiAction';
 
@@ -34,6 +34,7 @@ export const updateAccountFlow = ({ dispatch }) => next => action => {
   next(action);
   if (action.type === FETCH_ACCOUNT_SUCCESS) {
     dispatch(updateAccount(action.payload));
+    dispatch(registerSession(action.payload));
     dispatch(hideSpinner());
   }
 };

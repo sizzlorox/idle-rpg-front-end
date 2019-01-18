@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { createHash } from 'crypto';
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -11,20 +12,16 @@ import { withStyles } from '@material-ui/core';
 const styles = {};
 
 class RegisterDialog extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      username: undefined,
-      email: undefined,
-      password: undefined,
-      confirmPassword: undefined,
-    };
-  }
+  state = {
+    username: undefined,
+    email: undefined,
+    password: undefined,
+    confirmPassword: undefined,
+  };
 
   _handleChange = key => event => {
     this.setState({
-      [key]: event.target.value,
+      [key]: key === 'password' ? createHash('sha256').update(event.target.value).digest('hex') : event.target.value,
     });
   };
 

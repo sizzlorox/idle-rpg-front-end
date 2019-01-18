@@ -7,7 +7,6 @@ const initUi = {
 };
 
 export function uiReducer(state = initUi, action) {
-  console.log(state, action);
   switch (action.type) {
     case SHOW_TOASTER:
       return {

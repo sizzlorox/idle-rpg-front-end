@@ -4,9 +4,15 @@ export const REGISTER_ACCOUNT = '[ACCOUNT] Register';
 export const UPDATE_ACCOUNT = '[ACCOUNT] Update';
 export const FETCH_ACCOUNT_SUCCESS = '[ACCOUNT] Fetch Success';
 export const FETCH_ACCOUNT_ERROR = '[ACCOUNT] Fetch Error';
+export const REGISTER_COOKIE = '[ACCOUNT] Register Cookie';
 
 export const loginAccount = (data) => ({
   type: LOGIN_ACCOUNT,
+  payload: data,
+});
+
+export const registerSession = (data) => ({
+  type: REGISTER_COOKIE,
   payload: data,
 });
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 // Redux
 import { connect } from 'react-redux';
@@ -7,7 +7,7 @@ import { hideToaster } from '../redux/actions/uiAction';
 // Material UI
 import { withSnackbar } from 'notistack';
 
-class ToasterContainer extends React.Component {
+class ToasterContainer extends Component {
   displayed = [];
 
   storeDisplayed = id => {
