@@ -1,6 +1,5 @@
 import { API_REQUEST } from "../actions/apiAction";
 import { showToaster } from '../actions/uiAction';
-import { Redirect } from 'react-router'
 
 import auth from '../../modules/Auth';
 
@@ -13,14 +12,14 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      method,
-      body: action.payload ? action.payload : {}
+      method
     };
     if (auth.getToken()) {
       payload.headers['authorization'] = `Bearer ${auth.getToken()}`;
-      payload.body['username'] = auth.getUsername();
     }
-    payload.body = JSON.stringify(payload.body);
+    if (method === 'POST') {
+      payload.body = JSON.stringify(action.payload ? action.payload : {});
+    }
 
     fetch(url, payload)
       .then(response => response.json())

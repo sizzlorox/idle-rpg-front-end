@@ -25,6 +25,9 @@ class AccountMenu extends Component {
 
   _handleLogout = () => {
     this.props.onLogout();
+    this.setState({
+      ancherEl: null
+    });
   };
 
   render() {

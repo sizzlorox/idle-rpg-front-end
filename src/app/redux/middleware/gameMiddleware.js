@@ -1,9 +1,12 @@
 import {
   CREATE_CHARACTER,
   CREATE_CHARACTER_SUCCESS,
-  CREATE_CHARACTER_ERROR
+  CREATE_CHARACTER_ERROR,
+  GET_CHARACTER,
+  GET_CHARACTER_SUCCESS,
+  GET_CHARACTER_ERROR
 } from '../actions/gameAction';
-import { showSpinner, hideSpinner } from '../actions/uiAction';
+import { showSpinner } from '../actions/uiAction';
 import { apiRequest } from '../actions/apiAction';
 
 const URL = process.env.NODE_ENV.includes('production')
@@ -18,4 +21,12 @@ export const createCharacterFlow = ({ dispatch }) => next => action => {
   }
 };
 
-export const gameMiddleware = [createCharacterFlow];
+export const getCharacterFlow = ({ dispatch }) => next => action => {
+  next(action);
+  if (action.type === GET_CHARACTER) {
+    dispatch(apiRequest('GET', `${URL}`, undefined, GET_CHARACTER_SUCCESS, GET_CHARACTER_ERROR));
+    dispatch(showSpinner());
+  }
+};
+
+export const gameMiddleware = [createCharacterFlow, getCharacterFlow];

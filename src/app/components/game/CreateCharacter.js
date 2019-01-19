@@ -42,7 +42,6 @@ class CreateCharacter extends Component {
 
   render() {
     const { classes } = this.props;
-    console.log(this.state);
     return (
       <React.Fragment>
         <form className={classes.container} autoComplete="off">
