@@ -61,7 +61,6 @@ class CreateCharacter extends Component {
               id="class-select"
               label="Class"
               className={classes.textField}
-              defaultValue="warrior"
               value={this.state.playerClass}
               onChange={this._handleChange('playerClass')}
               SelectProps={{
@@ -89,7 +88,6 @@ class CreateCharacter extends Component {
               id="gender-select"
               label="Gender"
               className={classes.textField}
-              defaultValue="male"
               value={this.state.gender}
               onChange={this._handleChange('gender')}
               SelectProps={{

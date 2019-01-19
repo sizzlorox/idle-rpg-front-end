@@ -8,9 +8,9 @@ export function gameReducer(game = {}, action) {
       };
 
     case GET_CHARACTER_SUCCESS:
-      console.log(game, action);
       return {
-        ...game
+        ...game,
+        player: action.payload
       };
 
     default:
