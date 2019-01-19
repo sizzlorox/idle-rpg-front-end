@@ -27,6 +27,7 @@ class RegisterDialog extends Component {
 
   _handleSubmit = () => {
     this.props.onSubmit(this.state);
+    this.props.onClose();
   };
 
   render() {
