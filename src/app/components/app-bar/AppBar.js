@@ -17,6 +17,7 @@ import { loginAccount, logoutAccount, registerAccount } from '../../redux/action
 import LoginDialog from './dialogs/LoginDialog';
 import RegisterDialog from './dialogs/RegisterDialog';
 import AccountMenu from './AccountMenu';
+import LoadingBar from './LoadingBar';
 
 const styles = {
   container: {
@@ -55,40 +56,44 @@ class TopAppBar extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <AppBar className="header">
-        <ToolBar>
-          <Typography variant="h6" color="inherit" className={classes.headerLabel}>
-            Idle-RPG
+      <React.Fragment>
+
+        <AppBar className="header">
+          <ToolBar>
+            <Typography variant="h6" color="inherit" className={classes.headerLabel}>
+              Idle-RPG
           </Typography>
-          <div className={classes.menu}>
-            {
-              auth.isUserAuthenticated()
-                ?
+            <div className={classes.menu}>
+              {
+                auth.isUserAuthenticated()
+                  ?
                   <React.Fragment>
                     <Button size="medium" color="inherit">
                       <Link className={classes.links} to="/game">Game</Link>
                     </Button>
                     <AccountMenu onLogout={this.props.logoutAccount} />
                   </React.Fragment>
-                :
-                <React.Fragment>
-                  <Button color="inherit" onClick={this._handleModal('login')} >Login</Button>
-                  <Button color="inherit" onClick={this._handleModal('register')}>Register</Button>
-                  <LoginDialog
-                    isOpen={this.state.login.isOpen}
-                    onClose={this._handleModal('login')}
-                    onSubmit={this.props.loginAccount}
-                  />
-                  <RegisterDialog
-                    isOpen={this.state.register.isOpen}
-                    onClose={this._handleModal('register')}
-                    onSubmit={this.props.registerAccount}
-                  />
-                </React.Fragment>
-            }
-          </div>
-        </ToolBar>
-      </AppBar>
+                  :
+                  <React.Fragment>
+                    <Button color="inherit" onClick={this._handleModal('login')} >Login</Button>
+                    <Button color="inherit" onClick={this._handleModal('register')}>Register</Button>
+                    <LoginDialog
+                      isOpen={this.state.login.isOpen}
+                      onClose={this._handleModal('login')}
+                      onSubmit={this.props.loginAccount}
+                    />
+                    <RegisterDialog
+                      isOpen={this.state.register.isOpen}
+                      onClose={this._handleModal('register')}
+                      onSubmit={this.props.registerAccount}
+                    />
+                  </React.Fragment>
+              }
+            </div>
+          </ToolBar>
+        </AppBar>
+        <LoadingBar pending={this.props.pending} />
+      </React.Fragment>
     )
   }
 }
