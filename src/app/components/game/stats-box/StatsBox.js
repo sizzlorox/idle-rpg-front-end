@@ -5,10 +5,6 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
-import HealthBar from './HealthBar';
-import ManaBar from './ManaBar';
-import ExpBar from './ExpBar';
-
 const styles = theme => ({
   cardContainer: {
     minWidth: '200px'
@@ -18,36 +14,33 @@ const styles = theme => ({
   }
 });
 
-const StatusBox = (props) => {
+const StatsBox = (props) => {
   const { player, classes } = props;
   return (
     <div className={classes.cardContainer}>
       <Card className={classes.card}>
         <CardContent>
           <Typography variant="h5" component="h2">
-            {player.name}
-          </Typography>
-          <Typography className={classes.title} color="textSecondary" gutterBottom>
-            Level {player.level}
+            Stats
           </Typography>
           <Typography className={classes.classContainer} color="textSecondary">
-            {player.gender} {player.playerClass.name}
+            Strength: {player.stats.str}
           </Typography>
-          <HealthBar
-            current={player.health.current}
-            max={player.health.max}
-          />
-          <ManaBar
-            current={player.mana.current}
-            max={player.mana.max}
-          />
-          <ExpBar
-            current={player.experience.current}
-            max={100 + (player.level * 15)}
-          />
+          <Typography className={classes.classContainer} color="textSecondary">
+            Dexterity: {player.stats.dex}
+          </Typography>
+          <Typography className={classes.classContainer} color="textSecondary">
+            Endurance: {player.stats.end}
+          </Typography>
+          <Typography className={classes.classContainer} color="textSecondary">
+            Intelligence: {player.stats.int}
+          </Typography>
+          <Typography className={classes.classContainer} color="textSecondary">
+            Luck: {player.stats.luk}
+          </Typography>
         </CardContent>
       </Card>
     </div>
   )
 }
-export default withStyles(styles)(StatusBox);
+export default withStyles(styles)(StatsBox);

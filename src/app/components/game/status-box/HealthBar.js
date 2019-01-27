@@ -10,23 +10,40 @@ const styles = theme => ({
   linearBarColorPrimary: {
     backgroundColor: red[500]
   },
+  barHeight: {
+    height: '2%',
+    width: 200
+  },
   barMargin: {
-    marginBottom: 8
+    margin: '12 0',
+    textAlign: 'center'
+  },
+  infoPosition: {
+    position: 'absolute',
+    zIndex: 1,
+    fontSize: '70%',
+    color: 'lightgrey',
+    width: 200
   }
 });
 
 const HealthBar = (props) => {
   const { current, max, classes } = props;
   return (
-    <LinearProgress
-      className={classes.barMargin}
-      classes={{
-        colorPrimary: classes.linearColorPrimary,
-        barColorPrimary: classes.linearBarColorPrimary,
-      }}
-      variant="determinate"
-      value={(current / max) * 100}
-    />
+    <div className={classes.barMargin}>
+      <div className={classes.infoPosition}>
+        {current} / {max}
+      </div>
+      <LinearProgress
+        className={classes.barHeight}
+        classes={{
+          colorPrimary: classes.linearColorPrimary,
+          barColorPrimary: classes.linearBarColorPrimary,
+        }}
+        variant="determinate"
+        value={(current / max) * 100}
+      />
+    </div>
   )
 }
 export default withStyles(styles)(HealthBar);

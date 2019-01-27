@@ -7,8 +7,26 @@ import { withStyles } from '@material-ui/core';
 
 import CreateCharacter from '../components/game/CreateCharacter';
 import StatusBox from '../components/game/status-box/StatusBox';
+import StatsBox from '../components/game/stats-box/StatsBox';
+import EquipBox from '../components/game/equip-box/EquipBox';
+import ChatBox from '../components/game/chat-box/ChatBox';
 
 const styles = theme => ({
+  mainContainer: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    flexDirection: 'col',
+    width: '100%'
+  },
+  gameContainer: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+    width: '100%',
+  },
+  equipBoxContainer: {
+    display: 'inherit'
+  },
   statusBoxContainer: {
     flexShrink: 1
   }
@@ -32,10 +50,23 @@ class Game extends Component {
         {
           game.player
             ?
-            <div className={classes.statusBoxContainer}>
-              <StatusBox
-                player={game.player}
-              />
+            <div className={classes.mainContainer}>
+              <div className={classes.gameContainer}>
+                <div className={classes.statusBoxContainer}>
+                  <StatusBox
+                    player={game.player}
+                  />
+                  <StatsBox
+                    player={game.player}
+                  />
+                </div>
+                <div className={classes.equipBoxContainer}>
+                  <EquipBox
+                    player={game.player}
+                  />
+                </div>
+              </div>
+              <ChatBox />
             </div>
             :
             <CreateCharacter />
