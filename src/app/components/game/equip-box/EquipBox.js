@@ -6,9 +6,6 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
-  cardContainer: {
-    minWidth: '200px'
-  },
   equipContainer: {
     textTransform: 'capitalize',
   },
@@ -17,7 +14,7 @@ const styles = theme => ({
 const EquipBox = (props) => {
   const { player, classes } = props;
   return (
-    <div className={classes.cardContainer}>
+    <div className="equipbox">
       <Card className={classes.card}>
         <CardContent className={classes.equipContainer}>
           <Typography variant="h5" component="h2">

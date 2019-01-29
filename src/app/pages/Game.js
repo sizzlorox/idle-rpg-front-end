@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 import { getCharacter } from '../redux/actions/gameAction';
 
 import { withStyles } from '@material-ui/core';
-import Input from '@material-ui/core/Input';
 
 import CreateCharacter from '../components/game/CreateCharacter';
 import StatusBox from '../components/game/status-box/StatusBox';
 import StatsBox from '../components/game/stats-box/StatsBox';
 import EquipBox from '../components/game/equip-box/EquipBox';
 import ChatBox from '../components/game/chat-box/ChatBox';
+import EventWindow from '../components/game/event-window/EventWindow';
 
 const styles = theme => ({});
 
@@ -43,16 +43,7 @@ class Game extends Component {
                   />
                 </div>
                 <div className="main event-container">
-                  <Input
-                    multiline
-                    rows="8"
-                    rowsMax="50"
-                    defaultValue="This should be event window"
-                    className="flex-grow width-full"
-                    margin="dense"
-                    variant="filled"
-                    readOnly
-                  />
+                  <EventWindow />
                 </div>
                 <div className="aside-2 equip-container">
                   <EquipBox
