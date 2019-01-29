@@ -8,14 +8,15 @@ html {
 body {
   min-height: 100%;
   width: 100%;
-  margin: 0px;
+  margin: 0;
 }
 
 #app {
-  position: absolute;
+  @import './layout';
+
+  position: relative;
   overflow: hidden;
   display: flex;
-  height: 100%;
   flex-wrap: nowrap;
   flex-direction: column;
   top: 0;
@@ -27,25 +28,98 @@ body {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
+    flex-grow: 1;
     height: 100%;
 
     .header {
-      position: relative;
-      display: block;
+      display: flex;
       flex-shrink: 0;
-      z-index: 1000;
-      height: 4em;
       background-color: #004f8c;
       background-image: url('/assets/brick-wall.png');
     }
 
     .content {
-      position: relative;
       display: flex;
-      height: 100%;
       overflow: hidden;
       flex-wrap: nowrap;
       flex-grow: 1;
+
+      .game-container {
+        width: 100%;
+        overflow: auto;
+
+        .info-container {
+          display: flex;
+          flex-direction: row;
+          flex: 1 100%;
+
+          /* Medium screens */
+          @media all and (min-width: 600px) {
+            /* We tell both sidebars to share a row */
+            .aside { flex: 1 auto; }
+          }
+
+          /* Large screens */
+          @media all and (min-width: 800px) {
+            /* We invert order of first sidebar and main
+            * And tell the main element to take twice as much width as the other two sidebars 
+            */
+            .main { flex: 2 0px; }
+            .aside-1 { order: 1; }
+            .main    { order: 2; }
+            .aside-2 { order: 3; }
+            .footer  { order: 4; }
+          }
+
+          .status-container {
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 1;
+
+            .statusbox {
+              margin: 8;
+              min-width: 200px;
+            }
+
+            .statsbox {
+              margin: 8;
+              min-width: 200px;
+            }
+          }
+
+          .equip-container {
+            display: flex;
+            flex-shrink: 1;
+          }
+
+          .event-container {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            height: calc(100% - 64px - 12em);
+          }
+        }
+
+        .chatbox-container {
+          display: flex;
+          height: 12em;
+          flex-shrink: 1;
+          flex-wrap: nowrap;
+
+          .chatbox-textarea {
+            display: flex;
+            flex-grow: 1;
+            flex-wrap: wrap;
+            flex-direction: col;
+          }
+
+          .chatbox-userlist {
+            display: flex;
+            flex-shrink: 1;
+            overflow: auto;
+          }
+        }
+      }
     }
     
     .footer {

@@ -10,37 +10,6 @@ import PersonIcon from '@material-ui/icons/Person';
 import ListItemText from '@material-ui/core/ListItemText';
 
 const styles = theme => ({
-  chatBoxContainer: {
-    display: 'flex',
-    width: '100%',
-    flexWrap: 'wrap',
-    flexDirection: 'row',
-    flexGrow: 1,
-    bottom: 0
-  },
-  chatContainer: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    flexDirection: 'col',
-    flexGrow: 1
-  },
-  classContainer: {
-    textTransform: 'capitalize',
-  },
-  userListContainer: {
-    display: 'flex',
-    flexShrink: 1,
-    overflow: 'auto',
-    height: 220
-  },
-  textArea: {
-    width: '100%',
-    flexGrow: 1
-  },
-  textField: {
-    width: '100%',
-    flexShrink: 1
-  },
   marginOverride: {
     marginTop: 0,
     marginBottom: 0
@@ -52,8 +21,8 @@ class ChatBox extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div className={classes.chatBoxContainer}>
-        <div className={classes.chatContainer}>
+      <div className="chatbox-container">
+        <div className="chatbox-textarea">
           <Input
             classes={{
               marginNormal: classes.marginOverride
@@ -62,17 +31,17 @@ class ChatBox extends Component {
             rows="8"
             rowsMax="50"
             defaultValue="Welcome to Idle-RPG"
-            className={classes.textArea}
+            className="flex-grow width-full"
             margin="dense"
             variant="filled"
             readOnly
           />
           <TextField
-            className={classes.textField}
+            className="flex-shrink width-full"
             multiline
           />
         </div>
-        <div className={classes.userListContainer}>
+        <div className="chatbox-userlist">
           <List dense>
             {
               Array(30).fill(

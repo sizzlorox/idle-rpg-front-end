@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getCharacter } from '../redux/actions/gameAction';
 
 import { withStyles } from '@material-ui/core';
+import Input from '@material-ui/core/Input';
 
 import CreateCharacter from '../components/game/CreateCharacter';
 import StatusBox from '../components/game/status-box/StatusBox';
@@ -50,9 +51,9 @@ class Game extends Component {
         {
           game.player
             ?
-            <div className={classes.mainContainer}>
-              <div className={classes.gameContainer}>
-                <div className={classes.statusBoxContainer}>
+            <div className="game-container">
+              <div className="info-container">
+                <div className="aside-1 status-container">
                   <StatusBox
                     player={game.player}
                   />
@@ -60,7 +61,19 @@ class Game extends Component {
                     player={game.player}
                   />
                 </div>
-                <div className={classes.equipBoxContainer}>
+                <div className="main event-container">
+                  <Input
+                    multiline
+                    rows="8"
+                    rowsMax="50"
+                    defaultValue="This should be event window"
+                    className="flex-grow width-full"
+                    margin="dense"
+                    variant="filled"
+                    readOnly
+                  />
+                </div>
+                <div className="aside-2 equip-container">
                   <EquipBox
                     player={game.player}
                   />

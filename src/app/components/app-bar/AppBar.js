@@ -57,12 +57,11 @@ class TopAppBar extends Component {
     const { classes } = this.props;
     return (
       <React.Fragment>
-
-        <AppBar className="header">
+        <AppBar position="relative" className="header">
           <ToolBar>
             <Typography variant="h6" color="inherit" className={classes.headerLabel}>
               Idle-RPG
-          </Typography>
+            </Typography>
             <div className={classes.menu}>
               {
                 auth.isUserAuthenticated()

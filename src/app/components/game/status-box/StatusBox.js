@@ -10,9 +10,6 @@ import ManaBar from './ManaBar';
 import ExpBar from './ExpBar';
 
 const styles = theme => ({
-  cardContainer: {
-    minWidth: '200px'
-  },
   classContainer: {
     textTransform: 'capitalize',
   }
@@ -21,7 +18,7 @@ const styles = theme => ({
 const StatusBox = (props) => {
   const { player, classes } = props;
   return (
-    <div className={classes.cardContainer}>
+    <div className="statusbox">
       <Card className={classes.card}>
         <CardContent>
           <Typography variant="h5" component="h2">
