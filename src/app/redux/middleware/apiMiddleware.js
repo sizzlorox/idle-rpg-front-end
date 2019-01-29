@@ -24,6 +24,12 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
     fetch(url, payload)
       .then(response => response.json())
       .then((data) => {
+        if (data.message === 'jwt expired') {
+          auth.clearSession();
+          console.log(data);
+          dispatch(showToaster('info', 'Token Expired'));
+        }
+
         dispatch({ type: onSuccess, payload: data })
         if (data.toaster.show) {
           dispatch(showToaster(data.toaster.type, data.message));
@@ -32,7 +38,9 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
           document.location.href = data.redirect;
         }
       })
-      .catch(error => dispatch({ type: onError, payload: error }))
+      .catch(error => {
+        dispatch({ type: onError, payload: error });
+      })
   }
   return next(action)
 };

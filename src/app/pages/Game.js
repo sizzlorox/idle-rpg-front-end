@@ -12,26 +12,7 @@ import StatsBox from '../components/game/stats-box/StatsBox';
 import EquipBox from '../components/game/equip-box/EquipBox';
 import ChatBox from '../components/game/chat-box/ChatBox';
 
-const styles = theme => ({
-  mainContainer: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    flexDirection: 'col',
-    width: '100%'
-  },
-  gameContainer: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    flexDirection: 'row',
-    width: '100%',
-  },
-  equipBoxContainer: {
-    display: 'inherit'
-  },
-  statusBoxContainer: {
-    flexShrink: 1
-  }
-});
+const styles = theme => ({});
 
 class Game extends Component {
   state = {};

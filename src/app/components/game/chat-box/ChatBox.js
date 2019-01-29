@@ -5,7 +5,6 @@ import TextField from '@material-ui/core/TextField';
 import Input from '@material-ui/core/Input';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import PersonIcon from '@material-ui/icons/Person';
 import ListItemText from '@material-ui/core/ListItemText';
 
@@ -24,9 +23,6 @@ class ChatBox extends Component {
       <div className="chatbox-container">
         <div className="chatbox-textarea">
           <Input
-            classes={{
-              marginNormal: classes.marginOverride
-            }}
             multiline
             rows="8"
             rowsMax="50"
@@ -44,16 +40,13 @@ class ChatBox extends Component {
         <div className="chatbox-userlist">
           <List dense>
             {
-              Array(30).fill(
-                <ListItem>
-                  <ListItemAvatar>
-                    <PersonIcon />
-                  </ListItemAvatar>
-                  <ListItemText
-                    primary="sizzlorr"
-                    secondary="Idlers-Guild"
-                  />
-                </ListItem>).map(item => item)
+              Array(30).fill(undefined).map((item, index) => <ListItem key={index}>
+                <PersonIcon />
+                <ListItemText
+                  primary="sizzlorr"
+                  secondary="Idlers-Guild"
+                />
+              </ListItem>)
             }
           </List>
         </div>
